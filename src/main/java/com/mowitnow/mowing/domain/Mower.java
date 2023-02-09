@@ -1,5 +1,6 @@
 package com.mowitnow.mowing.domain;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
@@ -12,7 +13,8 @@ public class Mower {
 
     private Orientation orientation;
 
-    private final Map<Orientation, Function<Position, Position>> FORWARD_ORIENTATIONS = Map.of(NORTH, Position::up,
+    private final Map<Orientation, Function<Position, Position>> FORWARD_ORIENTATIONS = Map.of(
+            NORTH, Position::up,
             EAST, Position::right,
             SOUTH, Position::down,
             WEST, Position::left);
@@ -20,6 +22,14 @@ public class Mower {
     public Mower(Position position, Orientation orientation) {
         this.position = position;
         this.orientation = orientation;
+    }
+
+    public Mower execute(List<Instruction> instructions) {
+        Mower mower = this;
+        for (Instruction instruction : instructions) {
+            mower = this.execute(instruction);
+        }
+        return mower;
     }
 
     public Mower execute(Instruction instruction) {

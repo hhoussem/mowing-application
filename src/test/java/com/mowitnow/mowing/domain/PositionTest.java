@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PositionTest {
-
+    // TODO: 09/02/2023 create Lawn fixture
     public static final int LAWN_LENGTH = 5;
     public static final int LAWN_WIDTH = 4;
     private final Lawn LAWN = new Lawn(LAWN_LENGTH, LAWN_WIDTH);

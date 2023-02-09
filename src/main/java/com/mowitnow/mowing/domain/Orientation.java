@@ -1,5 +1,14 @@
 package com.mowitnow.mowing.domain;
 
 public enum Orientation {
-    N, E, S, W;
+    NORTH('N'),
+    EAST('E'),
+    SOUTH('S'),
+    WEST('W');
+
+    private final char abbreviation;
+
+    Orientation(char abbreviation) {
+        this.abbreviation = abbreviation;
+    }
 }

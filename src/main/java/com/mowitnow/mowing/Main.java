@@ -1,4 +1,4 @@
-package com.mowitnow.core;
+package com.mowitnow.mowing;
 
 public class Main {
 

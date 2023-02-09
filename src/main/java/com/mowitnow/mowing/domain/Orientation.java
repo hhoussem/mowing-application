@@ -1,5 +1,7 @@
 package com.mowitnow.mowing.domain;
 
+import static com.mowitnow.mowing.domain.Instruction.FORWARD;
+
 public enum Orientation {
     NORTH('N'),
     EAST('E'),
@@ -10,5 +12,9 @@ public enum Orientation {
 
     Orientation(char abbreviation) {
         this.abbreviation = abbreviation;
+    }
+
+    Orientation turn(Instruction instruction) {
+        return FORWARD.equals(instruction) ? this : null;
     }
 }

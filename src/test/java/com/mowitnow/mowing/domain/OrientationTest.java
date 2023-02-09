@@ -2,8 +2,7 @@ package com.mowitnow.mowing.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static com.mowitnow.mowing.domain.Instruction.FORWARD;
-import static com.mowitnow.mowing.domain.Instruction.LEFT;
+import static com.mowitnow.mowing.domain.Instruction.*;
 import static com.mowitnow.mowing.domain.Orientation.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -23,5 +22,13 @@ class OrientationTest {
         assertEquals(EAST, SOUTH.turn(LEFT));
         assertEquals(NORTH, EAST.turn(LEFT));
         assertEquals(SOUTH, WEST.turn(LEFT));
+    }
+
+    @Test
+    void orientation_turn_right() {
+        assertEquals(EAST, NORTH.turn(RIGHT));
+        assertEquals(WEST, SOUTH.turn(RIGHT));
+        assertEquals(SOUTH, EAST.turn(RIGHT));
+        assertEquals(NORTH, WEST.turn(RIGHT));
     }
 }

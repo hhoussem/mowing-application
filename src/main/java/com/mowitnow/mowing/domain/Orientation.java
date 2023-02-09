@@ -2,8 +2,7 @@ package com.mowitnow.mowing.domain;
 
 import java.util.Map;
 
-import static com.mowitnow.mowing.domain.Instruction.FORWARD;
-import static com.mowitnow.mowing.domain.Instruction.LEFT;
+import static com.mowitnow.mowing.domain.Instruction.*;
 
 public enum Orientation {
     NORTH('N'),
@@ -13,10 +12,10 @@ public enum Orientation {
 
     private final char abbreviation;
 
-    private final static Map<Orientation, Map<Instruction, Orientation>> INSTRUCTIONS_MAPPING = Map.of(NORTH, Map.of(LEFT, WEST),
-            EAST, Map.of(LEFT, NORTH),
-            SOUTH, Map.of(LEFT, EAST),
-            WEST, Map.of(LEFT, SOUTH));
+    private final static Map<Orientation, Map<Instruction, Orientation>> INSTRUCTIONS_MAPPING = Map.of(NORTH, Map.of(LEFT, WEST, RIGHT, EAST),
+            EAST, Map.of(LEFT, NORTH, RIGHT, SOUTH),
+            SOUTH, Map.of(LEFT, EAST, RIGHT, WEST),
+            WEST, Map.of(LEFT, SOUTH, RIGHT, NORTH));
 
     Orientation(char abbreviation) {
         this.abbreviation = abbreviation;

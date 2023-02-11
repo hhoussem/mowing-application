@@ -3,6 +3,7 @@ package com.mowitnow.mowing.domain;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class PositionTest {
     // TODO: 09/02/2023 create Lawn fixture
@@ -56,5 +57,11 @@ class PositionTest {
     void left_position_is_the_same_when_it_is_on_left_limit_of_lawn() {
         Position position = new Position(0, 2, LAWN);
         assertEquals(position, position.left());
+    }
+
+    @Test
+    void new_position_is_not_equal_to_old_position() {
+        Position position = new Position(1, 1, LAWN);
+        assertNotEquals(position, position.up());
     }
 }

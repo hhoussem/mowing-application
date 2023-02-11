@@ -3,8 +3,8 @@ package com.mowitnow.mowing.domain;
 import java.util.Objects;
 
 public class Position {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
     private final Lawn lawn;
 
     public Position(int x, int y, Lawn lawn) {
@@ -14,22 +14,30 @@ public class Position {
     }
 
     public Position up() {
-        this.y = (this.y + 1 <= this.lawn.getWidth()) ? ++this.y : this.y;
+        if (this.y + 1 <= this.lawn.getWidth()) {
+            return new Position(this.x, this.y + 1, this.lawn);
+        }
         return this;
     }
 
     public Position down() {
-        this.y = (this.y - 1 >= 0) ? --this.y : this.y;
+        if (this.y - 1 >= 0) {
+            return new Position(this.x, this.y - 1, this.lawn);
+        }
         return this;
     }
 
     public Position right() {
-        this.x = (this.x + 1 <= this.lawn.getLength()) ? ++this.x : this.x;
+        if (this.x + 1 <= this.lawn.getLength()) {
+            return new Position(this.x + 1, this.y, this.lawn);
+        }
         return this;
     }
 
     public Position left() {
-        this.x = (this.x - 1 >= 0) ? --this.x : this.x;
+        if (this.x - 1 >= 0) {
+            return new Position(this.x - 1, this.y, this.lawn);
+        }
         return this;
     }
 
@@ -38,12 +46,12 @@ public class Position {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Position position = (Position) o;
-        return x == position.x && y == position.y;
+        return x == position.x && y == position.y && lawn.equals(position.lawn);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y);
+        return Objects.hash(x, y, lawn);
     }
 
     @Override

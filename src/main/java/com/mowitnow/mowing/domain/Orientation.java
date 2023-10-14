@@ -1,9 +1,8 @@
 package com.mowitnow.mowing.domain;
 
-import java.util.Arrays;
-
 import static com.mowitnow.mowing.domain.Instruction.LEFT;
 import static com.mowitnow.mowing.domain.Instruction.RIGHT;
+import static java.util.Arrays.stream;
 
 public enum Orientation {
     NORTH('N', 0),
@@ -32,8 +31,15 @@ public enum Orientation {
 
     }
 
+    public static Orientation of(char abbreviation) {
+        return stream(values())
+                .filter(o -> o.abbreviation == abbreviation)
+                .findFirst()
+                .orElseThrow();
+    }
+
     private Orientation getOrientationByAngle(int angle) {
-        return Arrays.stream(values()).filter(o -> o.angle == angle).findFirst().orElseThrow(
+        return stream(values()).filter(o -> o.angle == angle).findFirst().orElseThrow(
                 () -> new IllegalArgumentException("Can not determine orientation of the angle: " + angle));
     }
 

@@ -65,4 +65,9 @@ public class Mower {
                 ", orientation=" + orientation +
                 '}';
     }
+
+    public String value() {
+        return
+                position.getX() + " " + position.getY() + " " + orientation;
+    }
 }
